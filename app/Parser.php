@@ -242,7 +242,7 @@ class Parser
                 continue;
             }
 
-            if (in_array($token, ['bend']) && $this->peekNextToken() === 'sinister'){
+            if (in_array($token, ['bend']) && $this->peekNextToken() === 'sinister') {
                 $token .= ' ' . $this->getNextToken();
             }
 
@@ -270,16 +270,21 @@ class Parser
 
             if ($partition) {
                 if (!data_get($arms, 'field.partition')) {
-                    $arms['field']['partition'] = $partition;
+                    $arms['field']['partition'][] = $partition;
                 }
 
                 continue;
             }
 
+
             if ($parsingField && $tincture) {
-                // dump("Field tincture: $tincture");
-                $fieldTinctures = data_get($arms, 'field.tinctures');
-                $arms['field']['tinctures'][] = $tincture;
+                $fieldTinctures = data_get($arms, 'field.tincture');
+
+                if (data_get($arms, 'field.partition')) {
+                    $arms['field']['fields'][] = ['tincture' => [$tincture]];
+                } else {
+                    $arms['field']['tincture'][] = $tincture;
+                }
             }
 
             if ($charge) {
@@ -309,7 +314,7 @@ class Parser
                     }
                 }
 
-                $arms['charges'][] = $parsedCharge;
+                $arms['field']['charges'][] = $parsedCharge;
             }
         }
 

@@ -26,58 +26,78 @@ class BlazonTest extends TestCase
             'azure, a lion passant argent' => [
                 'Azure, a lion passant argent.',
                 [
-                    'field' => ['tinctures' => ['azure']],
-                    'charges' => [
-                        ['charge' => 'lion', 'number' => 1, 'modifiers' => ['passant'], 'tincture' => ['argent']],
+                    'field' => [
+                        'tincture' => ['azure'],
+                        'charges' => [
+                            ['charge' => 'lion', 'number' => 1, 'modifiers' => ['passant'], 'tincture' => ['argent']],
+                        ],
                     ],
                 ],
             ],
             'gules, a lion rampant or' => [
                 'Gules, a lion rampant guardant Or.',
                 [
-                    'field' => ['tinctures' => ['gules']],
-                    'charges' => [
-                        ['charge' => 'lion', 'number' => 1, 'modifiers' => ['rampant', 'guardant'], 'tincture' => ['or']],
+                    'field' => [
+                        'tincture' => ['gules'],
+                        'charges' => [
+                            ['charge' => 'lion', 'number' => 1, 'modifiers' => ['rampant', 'guardant'], 'tincture' => ['or']],
+                        ],
                     ],
                 ],
             ],
             'argent, an eagle displayed sable langued azure' => [
                 'Argent, an eagle displayed sable langued azure.',
                 [
-                    'field' => ['tinctures' => ['argent']],
-                    'charges' => [
-                        ['charge' => 'eagle', 'number' => 1, 'modifiers' => ['displayed'], 'tincture' => ['sable', 'langued' => 'azure']],
+                    'field' => [
+                        'tincture' => ['argent'],
+                        'charges' => [
+                            ['charge' => 'eagle', 'number' => 1, 'modifiers' => ['displayed'], 'tincture' => ['sable', 'langued' => 'azure']],
+                        ],
                     ],
                 ],
             ],
             'vert, three fleur-de-lys argent' => [
                 'Vert, three fleur-de-lys argent.',
                 [
-                    'field' => ['tinctures' => ['vert']],
-                    'charges' => [
-                        ['charge' => 'fleur-de-lys', 'number' => 3, 'tincture' => ['argent']],
+                    'field' => [
+                        'tincture' => ['vert'],
+                        'charges' => [
+                            ['charge' => 'fleur-de-lys', 'number' => 3, 'tincture' => ['argent']],
+                        ],
                     ],
                 ],
             ],
-            'per fess argent and azure, a hammer proper' => [
+            'per fess argent and azure, two hammers proper' => [
                 'Per fess argent and azure, two hammers proper.',
                 [
-                    'field' => ['partition' => 'per-fess', 'tinctures' => ['argent', 'azure']],
-                    'charges' => [
-                        ['charge' => 'hammer', 'number' => 2, 'tincture' => ['proper']],
+                    'field' => [
+                        'partition' => ['per-fess'],
+                        'fields' => [
+                            ['tincture' => ['argent']],
+                            ['tincture' => ['azure']],
+                        ],
+                        'charges' => [
+                            ['charge' => 'hammer', 'number' => 2, 'tincture' => ['proper']],
+                        ],
                     ],
                 ],
             ],
             'tierced per pale gules, argent, and gules, a maple leaf gules' => [
                 'Tierced per pale gules, argent, and gules, a maple leaf gules.',
                 [
-                    'field' => ['partition' => 'tierced-per-pale', 'tinctures' => ['gules', 'argent', 'gules']],
-                    'charges' => [
-                        ['charge' => 'maple-leaf', 'number' => 1, 'tincture' => ['gules']],
+                    'field' => [
+                        'partition' => ['tierced-per-pale'],
+                        'fields' => [
+                            ['tincture' => ['gules']],
+                            ['tincture' => ['argent']],
+                            ['tincture' => ['gules']],
+                        ],
+                        'charges' => [
+                            ['charge' => 'maple-leaf', 'number' => 1, 'tincture' => ['gules']],
+                        ],
                     ],
                 ],
             ],
-
         ];
     }
 
