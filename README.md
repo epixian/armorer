@@ -6,7 +6,9 @@ An engine for parsing heraldry blazons.
 
 Data is parsed into a standard blazon data format, described below with examples using PHP array syntax.
 
-The base element in all blazons is the `field`, which can have the following sub-elements: either a `tincture` *or* a `partition` (e.g. per fess) + `fields` (individual partitions), and optionally `charges` or `ordinaries`.  Ordinaries may have their own charges.  Charges have a `charge`, `number`, and `tincture`.  Most elements can also  have `modifiers` (e.g. complex lines of partition, a charge's posture or position, tincture patterns, etc).  Due to the potential for complex arrangements, tinctures, partitions, charges, and modifiers are generally encoded as arrays, with array order important.
+The base element in all blazons is the `field`, which can have the following sub-elements: either a `tincture` *or* a `partition` (e.g. per fess) + `fields` (individual partitions), and optionally `charges` or `ordinaries`.  Ordinaries may have their own charges.  Charges generally have a `charge`, `number`, and `tincture`, and optionally a `position`.  Most elements can also  have `modifiers` (e.g. complex lines of partition, a charge's posture or position, tincture patterns, etc).
+
+Due to the potential for complex arrangements, tinctures, partitions, charges, and modifiers are generally encoded as arrays, with array order important.
 
 ### Examples
 
@@ -72,6 +74,37 @@ The base element in all blazons is the `field`, which can have the following sub
                     'sable',
                     'langued' => 'azure'
                 ],
+            ],
+        ],
+    ],
+],
+```
+
+*Vert, a bend sinister invected sable between two mullets Or.*
+> Note: due to the ordinary's position *between* relative to the charges recorded in the blazon, the charges are separated and given absolute positions *dexter-chief* and *sinister-base* respectively.
+```
+[
+    'field' => [
+        'tincture' => ['vert'],
+        'ordinaries' => [
+            [
+                'ordinary' => 'bend-sinister',
+                'modifiers' => ['invected'],
+                'tincture' => ['sable],
+            ],
+        ]
+        'charges' => [
+            [
+                'charge' => 'mullet',
+                'number' => 1,
+                'position' => 'dexter-chief'
+                'tincture' => ['or'],
+            ],
+            [
+                'charge' => 'mullet',
+                'number' => 1,
+                'position' => 'sinister-base'
+                'tincture' => ['or'],
             ],
         ],
     ],
